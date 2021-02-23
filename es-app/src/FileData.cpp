@@ -186,6 +186,41 @@ const std::string FileData::getThumbnailPath()
 	return thumbnail;
 }
 
+const bool FileData::getCategoryAction()
+{
+	return getMetadata(MetaDataId::CategoryAction) == "true";
+}
+
+const bool FileData::getCategoryPlatform()
+{
+	return getMetadata(MetaDataId::CategoryPlatform) == "true";
+}
+
+const bool FileData::getCategoryShooter()
+{
+	return getMetadata(MetaDataId::CategoryShooter) == "true";
+}
+
+const bool FileData::getCategoryAdventure()
+{
+	return getMetadata(MetaDataId::CategoryAdventure) == "true";
+}
+
+const bool FileData::getCategory70s()
+{
+	return getMetadata(MetaDataId::Category70s) == "true";
+}
+
+const bool FileData::getCategory80s()
+{
+	return getMetadata(MetaDataId::Category80s) == "true";
+}
+
+const bool FileData::getCategory90s()
+{
+	return getMetadata(MetaDataId::Category90s) == "true";
+}
+
 const bool FileData::getFavorite()
 {
 	return getMetadata(MetaDataId::Favorite) == "true";

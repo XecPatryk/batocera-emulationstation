@@ -60,6 +60,16 @@ void MetaDataList::initMetadata()
 
 		{ ArcadeSystemName, "arcadesystemname",  MD_STRING,        "",                 false,      _("Arcade system"),        _("enter game arcade system"), false },
 
+		{ CategoryAction,         "CategoryAction",    MD_BOOL,                "false",            false,      _("Only Action games"),             _("enter Category Action"),			false },
+		{ CategoryPlatform,         "CategoryPlatform",    MD_BOOL,                "false",            false,      _("Only Platform games"),             _("enter Category Platform"),			false },
+		{ CategoryShooter,         "CategoryShooter",    MD_BOOL,                "false",            false,      _("Only Shooter games"),             _("enter Category Shooter"),			false },
+		{ CategoryAdventure,         "CategoryAdventure",    MD_BOOL,                "false",            false,      _("Only Adventure games"),             _("enter Category Adventure"),			false },
+
+		{ Category70s,         "Category70s",    MD_BOOL,                "false",            false,      _("Only 70s games"),             _("enter Category 70s"),			false },
+		{ Category80s,         "Category80s",    MD_BOOL,                "false",            false,      _("Only 80s games"),             _("enter Category 80s"),			false },
+		{ Category90s,         "Category90s",    MD_BOOL,                "false",            false,      _("Only 90s games"),             _("enter Category 90s"),			false },
+
+
 		{ Players,          "players",     MD_INT,                 "",                false,      _("Players"),              _("enter number of players"),	false },
 		{ Favorite,         "favorite",    MD_BOOL,                "false",            false,      _("Favorite"),             _("enter favorite"),			false },
 		{ Hidden,           "hidden",      MD_BOOL,                "false",            false,      _("Hidden"),               _("enter hidden"),			true },
