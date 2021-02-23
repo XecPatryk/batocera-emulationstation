@@ -495,7 +495,7 @@ bool SystemView::input(InputConfig* config, Input input)
 		{
 			// get random system
 			// go to system
-			setCursor(SystemData::getRandomSystem());
+			//setCursor(SystemData::getRandomSystem());
 			return true;
 		}
 
