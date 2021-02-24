@@ -26,6 +26,8 @@
 const int logoBuffersLeft[] = { -5, -2, -1 };
 const int logoBuffersRight[] = { 1, 2, 5 };
 
+bool category_view = true;
+
 SystemView::SystemView(Window* window) : IList<SystemViewData, SystemData*>(window, LIST_SCROLL_STYLE_SLOW, LIST_ALWAYS_LOOP),
 										 mViewNeedsReload(true),
 										 mSystemInfo(window, _("SYSTEM INFO"), Font::get(FONT_SIZE_SMALL), 0x33333300, ALIGN_CENTER)
@@ -157,12 +159,33 @@ void SystemView::populate()
 
 	for(auto it = SystemData::sSystemVector.cbegin(); it != SystemData::sSystemVector.cend(); it++)
 	{
+
+		char trstring2[1024];
+
+		snprintf(trstring2, 1024, _("System '%s' :)").c_str(), (*it)->getFullName().c_str()); // batocera
+		//mWindow->displayNotificationMessage(trstring2, 10000);
+
 		const std::shared_ptr<ThemeData>& theme = (*it)->getTheme();
 
 		if(mViewNeedsReload)
 			getViewElements(theme);
 
-		if((*it)->isVisible())
+		bool allow_show = false;
+		if(category_view == true){
+			//allow only TOP100
+			//nazwa (*it)->getFullName()
+			if ((*it)->getFullName().find("category") != std::string::npos) {
+				allow_show = true;
+			}
+		}else{
+			//alowall
+			allow_show = true;
+			if ((*it)->getFullName().find("category") != std::string::npos) {
+				allow_show = false;
+			}
+			
+		}
+		if((*it)->isVisible() && allow_show)
 		{
 			Entry e;
 			e.name = (*it)->getName();
@@ -496,6 +519,19 @@ bool SystemView::input(InputConfig* config, Input input)
 			// get random system
 			// go to system
 			//setCursor(SystemData::getRandomSystem());
+			if(category_view == true){
+				category_view = false;
+			}else{
+				category_view = true;
+			}
+
+			//
+			auto zz = SystemData::sSystemVector.cbegin();
+			setCursor((*zz));
+			populate();
+
+			auto zz2 = SystemData::sSystemVector.cbegin();
+			setCursor((*zz2));
 			return true;
 		}
 
@@ -933,10 +969,16 @@ std::vector<HelpPrompt> SystemView::getHelpPrompts()
 
 	prompts.push_back(HelpPrompt(BUTTON_OK, _("SELECT")));
 
-	if (SystemData::isNetplayActivated() && SystemConf::getInstance()->getBool("global.netplay"))
+	/*if (SystemData::isNetplayActivated() && SystemConf::getInstance()->getBool("global.netplay"))
 		prompts.push_back(HelpPrompt("x", _("NETPLAY")));
 	else
-		prompts.push_back(HelpPrompt("x", _("RANDOM")));
+		prompts.push_back(HelpPrompt("x", _("RANDOM")));*/
+
+	if(category_view == true){
+		prompts.push_back(HelpPrompt("x", _("EMULATORS")));
+	}else{
+		prompts.push_back(HelpPrompt("x", _("CATEGORIES")));
+	}
 
 	if (SystemData::getSystem("all") != nullptr)
 		prompts.push_back(HelpPrompt("y", _("QUICK SEARCH")));
