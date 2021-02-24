@@ -157,18 +157,21 @@ void SystemView::populate()
 
 	clearEntries();
 
-	int asd = 15000;
-
 	for(auto it = SystemData::sSystemVector.cbegin(); it != SystemData::sSystemVector.cend(); it++)
 	{
-		asd -= 500;
+
+		char trstring2[1024];
+
+		snprintf(trstring2, 1024, _("System '%s' :)").c_str(), (*it)->getFullName().c_str()); // batocera
+		//mWindow->displayNotificationMessage(trstring2, 10000);
+
 		const std::shared_ptr<ThemeData>& theme = (*it)->getTheme();
 
 		if(mViewNeedsReload){
 			getViewElements(theme);
 		}
 
-		bool allow_show = false;
+		bool allow_show = true;
 		if(category_view == true){
 			//allow only TOP100
 			//nazwa (*it)->getFullName()
@@ -184,17 +187,7 @@ void SystemView::populate()
 			
 		}
 
-		if(allow_show == true){
-			char trstring2[1024];
-			snprintf(trstring2, 1024, _("System '%s' TRUE").c_str(), (*it)->getFullName().c_str()); // batocera
-			mWindow->displayNotificationMessage(trstring2, asd);
-		}else{
-			char trstring2[1024];
-			snprintf(trstring2, 1024, _("System '%s' FALSE").c_str(), (*it)->getFullName().c_str()); // batocera
-			mWindow->displayNotificationMessage(trstring2, asd);
-		}
-
-		if((*it)->isVisible())
+		if((*it)->isVisible() && allow_show == true)
 		{
 			Entry e;
 			e.name = (*it)->getName();

@@ -1119,7 +1119,6 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 							include = false;
 						}
 					}
-					include = true;
 					//====================================
 					break;
 				case AUTO_CATEGORY_80s:
@@ -1139,7 +1138,6 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 							include = false;
 						}
 					}
-					include = true;
 					//====================================
 					break;
 				case AUTO_CATEGORY_90s:
