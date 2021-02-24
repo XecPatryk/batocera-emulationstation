@@ -33,9 +33,31 @@ std::string myCollectionsName = "collections";
  * a CollectionSystemManager Instance */
 CollectionSystemManager* CollectionSystemManager::sInstance = NULL;
 
+// array for assigning games by name
+CollectionByName categoryByName[] = {
+	{"Darkwing Duck 2", AUTO_CATEGORY_SHOOTER},
+	{"Paperboy 2", AUTO_CATEGORY_SHOOTER},
+	{"DuckTales 2", AUTO_CATEGORY_SHOOTER}
+};
+
+//array of system to be sorted by age
+std::string systemForCategorySort[] = {"nes", "c64"};
+
+auto categoryByNameVector = std::vector<CollectionByName>(categoryByName, categoryByName + sizeof(categoryByName) / sizeof(categoryByName[0]));
+
 std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
 {
 	CollectionSystemDecl systemDecls[] = {
+		//custom categories
+		{ AUTO_CATEGORY_70s,       "category_70s",    _("category_70s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_70s",          false,       true },
+		{ AUTO_CATEGORY_80s,       "category_80s",    _("category_80s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_80s",          false,       true },
+		{ AUTO_CATEGORY_90s,       "category_90s",    _("category_90s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_90s",          false,       true },
+
+		{ AUTO_CATEGORY_ACTION,       "category_action",    _("category_action"),         FileSorts::FILENAME_ASCENDING,    "auto-category_action",          false,       true },
+		{ AUTO_CATEGORY_PLATFORM,       "category_platform",    _("category_platform"),         FileSorts::FILENAME_ASCENDING,    "auto-category_platform",          false,       true },
+		{ AUTO_CATEGORY_SHOOTER,       "category_shooter",    _("category_shooter"),         FileSorts::FILENAME_ASCENDING,    "auto-category_shooter",          false,       true },
+		{ AUTO_CATEGORY_ADVENTURE,       "category_adventure",    _("category_adventure"),         FileSorts::FILENAME_ASCENDING,    "auto-category_adventure",          false,       true },
+		
 		//type                name            long name                 default sort					  theme folder               isCustom     displayIfEmpty
 		{ AUTO_ALL_GAMES,       "all",          _("all games"),         FileSorts::FILENAME_ASCENDING,    "auto-allgames",           false,       true },
 		{ AUTO_LAST_PLAYED,     "recent",       _("last played"),       FileSorts::LASTPLAYED_ASCENDING,  "auto-lastplayed",         false,       true },
@@ -625,7 +647,7 @@ bool CollectionSystemManager::toggleGameInCollection(FileData* file, const std::
 
 	CollectionSystemData* collectionSystemData = nullptr;
 
-	if (collectionName != "Favorites")
+		if (collectionName != "Favorites" && collectionName != "Category70s" && collectionName != "Category80s" && collectionName != "Category90s")
 	{
 		if (mCustomCollectionSystemsData.find(collectionName) == mCustomCollectionSystemsData.cend())
 			return false;
@@ -692,14 +714,101 @@ bool CollectionSystemManager::toggleGameInCollection(FileData* file, const std::
 		sysData->removeFromIndex(file);
 			
 		MetaDataList* md = &file->getSourceFileData()->getMetadata();
-			
-		std::string value = md->get(MetaDataId::Favorite);
-		if (value != "true")
-			md->set(MetaDataId::Favorite, "true");
-		else
-		{
-			adding = false;
-			md->set(MetaDataId::Favorite, "false");
+
+		std::string value;
+		if (collectionName == "Favorites"){
+			value = md->get(MetaDataId::Favorite);
+			if (value != "true")
+				md->set(MetaDataId::Favorite, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::Favorite, "false");
+			}
+		}
+
+		//Category70s
+		if (collectionName == "Category70s"){
+			value = md->get(MetaDataId::Category70s);
+			if (value != "true")
+				md->set(MetaDataId::Category70s, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::Category70s, "false");
+			}
+		}
+
+		//Category80s
+		if (collectionName == "Category80s"){
+			value = md->get(MetaDataId::Category80s);
+			if (value != "true")
+				md->set(MetaDataId::Category80s, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::Category80s, "false");
+			}
+		}
+
+		//Category90s
+		if (collectionName == "Category90s"){
+			value = md->get(MetaDataId::Category90s);
+			if (value != "true")
+				md->set(MetaDataId::Category90s, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::Category90s, "false");
+			}
+		}
+
+		//CategoryAction
+		if (collectionName == "CategoryAction"){
+			value = md->get(MetaDataId::CategoryAction);
+			if (value != "true")
+				md->set(MetaDataId::CategoryAction, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::CategoryAction, "false");
+			}
+		}
+
+		//CategoryPlatform
+		if (collectionName == "CategoryPlatform"){
+			value = md->get(MetaDataId::CategoryPlatform);
+			if (value != "true")
+				md->set(MetaDataId::CategoryPlatform, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::CategoryPlatform, "false");
+			}
+		}
+
+		//CategoryShooter
+		if (collectionName == "CategoryShooter"){
+			value = md->get(MetaDataId::CategoryShooter);
+			if (value != "true")
+				md->set(MetaDataId::CategoryShooter, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::CategoryShooter, "false");
+			}
+		}
+
+		//CategoryAdventure
+		if (collectionName == "CategoryAdventure"){
+			value = md->get(MetaDataId::CategoryAdventure);
+			if (value != "true")
+				md->set(MetaDataId::CategoryAdventure, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::CategoryAdventure, "false");
+			}
 		}
 
 		sysData->addToIndex(file);
@@ -964,6 +1073,15 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 					continue;
 			}
 
+			std::string name_gameDC = game->getMetadata(MetaDataId::Name);
+			std::string years_gameDC = game->getMetadata(MetaDataId::ReleaseDate);
+			std::string genre_gameDC = game->getMetadata(MetaDataId::Genre);
+			std::string  y1 = years_gameDC.substr(0, 1).c_str();
+			std::string  y2 = years_gameDC.substr(1, 1).c_str();
+			std::string  y3 = years_gameDC.substr(2, 1).c_str();
+			std::string  y4 = years_gameDC.substr(3, 1).c_str();
+			std::string system_gameDC = game->getSystemName();
+
 			switch(sysDecl.type) 
 			{
 				case AUTO_ALL_GAMES:
@@ -984,6 +1102,95 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 					// we may still want to add files we don't want in auto collections in "favorites"
 					include = game->getFavorite();
 					break;
+				case AUTO_CATEGORY_70s:
+					// we may still want to add files we don't want in auto collections in "favorites"
+					//include = game->getCategory70s();
+					if (years_gameDC.empty()){
+						include = false;
+					}else{
+						if(y2 == "9" && y3 == "7"){
+							include = false;
+							for(std::string systemSingle : systemForCategorySort){
+								if(systemSingle == system_gameDC){
+									include = true;
+								}
+							}
+						}else{
+							include = false;
+						}
+					}
+					//====================================
+					break;
+				case AUTO_CATEGORY_80s:
+					// we may still want to add files we don't want in auto collections in "favorites"
+					//include = game->getCategory80s();
+					if (years_gameDC.empty()){
+						include = false;
+					}else{
+						if(y2 == "9" && y3 == "8"){
+							include = false;
+							for(std::string systemSingle : systemForCategorySort){
+								if(systemSingle == system_gameDC){
+									include = true;
+								}
+							}
+						}else{
+							include = false;
+						}
+					}
+					//====================================
+					break;
+				case AUTO_CATEGORY_90s:
+					// we may still want to add files we don't want in auto collections in "favorites"
+					//include = game->getCategory90s();
+					if (years_gameDC.empty()){
+						include = false;
+					}else{
+						if(y2 == "9" && y3 == "9"){
+							include = false;
+							for(std::string systemSingle : systemForCategorySort){
+								if(systemSingle == system_gameDC){
+									include = true;
+								}
+							}
+						}else{
+							include = false;
+						}
+					}
+					//====================================
+					break;
+				case AUTO_CATEGORY_ACTION:
+					if (genre_gameDC.find("Action") != std::string::npos) {
+						include = true;
+					}else{
+						include = false;
+					}
+					//====================================
+					break;
+				case AUTO_CATEGORY_PLATFORM:
+					if (genre_gameDC.find("Platform") != std::string::npos) {
+						include = true;
+					}else{
+						include = false;
+					}
+					//====================================
+					break;
+				case AUTO_CATEGORY_SHOOTER:
+					if (genre_gameDC.find("Shooter") != std::string::npos) {
+						include = true;
+					}else{
+						include = false;
+					}
+					//by name
+					if(include == false){
+						for(auto it = categoryByNameVector.cbegin(); it != categoryByNameVector.cend(); it++)
+						{
+							if (name_gameDC.find((*it).name) != std::string::npos && (*it).system == AUTO_CATEGORY_SHOOTER) {
+								include = true;
+							}
+						}
+					}
+					//====================================
 				case AUTO_ARCADE:
 					include = isArcade;
 					break;

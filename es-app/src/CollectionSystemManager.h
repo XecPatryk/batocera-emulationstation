@@ -16,6 +16,13 @@ struct SystemEnvironmentData;
 
 enum CollectionSystemType
 {
+	AUTO_CATEGORY_ACTION,
+	AUTO_CATEGORY_PLATFORM,
+	AUTO_CATEGORY_SHOOTER,
+	AUTO_CATEGORY_ADVENTURE,
+	AUTO_CATEGORY_70s,
+	AUTO_CATEGORY_80s,
+	AUTO_CATEGORY_90s,
 	AUTO_ALL_GAMES,
 	AUTO_LAST_PLAYED,	
 	AUTO_FAVORITES,
@@ -26,6 +33,12 @@ enum CollectionSystemType
 	AUTO_RETROACHIEVEMENTS,
 	AUTO_VERTICALARCADE,
 	CUSTOM_COLLECTION,	
+};
+
+struct CollectionByName
+{
+	std::string name;
+	CollectionSystemType system;
 };
 
 struct CollectionSystemDecl
