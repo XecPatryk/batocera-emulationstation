@@ -159,12 +159,6 @@ void SystemView::populate()
 
 	for(auto it = SystemData::sSystemVector.cbegin(); it != SystemData::sSystemVector.cend(); it++)
 	{
-
-		char trstring2[1024];
-
-		snprintf(trstring2, 1024, _("System '%s' :)").c_str(), (*it)->getFullName().c_str()); // batocera
-		//mWindow->displayNotificationMessage(trstring2, 10000);
-
 		const std::shared_ptr<ThemeData>& theme = (*it)->getTheme();
 
 		if(mViewNeedsReload){
@@ -187,7 +181,17 @@ void SystemView::populate()
 			
 		}
 
-		if((*it)->isVisible() && allow_show == true)
+		if(allow_show == true){
+			char trstring2[1024];
+			snprintf(trstring2, 1024, _("System '%s' TRUE").c_str(), (*it)->getFullName().c_str()); // batocera
+			mWindow->displayNotificationMessage(trstring2, 10000);
+		}else{
+			char trstring2[1024];
+			snprintf(trstring2, 1024, _("System '%s' FALSE").c_str(), (*it)->getFullName().c_str()); // batocera
+			mWindow->displayNotificationMessage(trstring2, 10000);
+		}
+
+		if((*it)->isVisible())
 		{
 			Entry e;
 			e.name = (*it)->getName();
