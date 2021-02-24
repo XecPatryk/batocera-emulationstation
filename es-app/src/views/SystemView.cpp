@@ -187,7 +187,7 @@ void SystemView::populate()
 			
 		}
 
-		if((*it)->isVisible())
+		if((*it)->isVisible() && allow_show == true)
 		{
 			Entry e;
 			e.name = (*it)->getName();
