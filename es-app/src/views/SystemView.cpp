@@ -167,9 +167,25 @@ void SystemView::populate()
 
 		const std::shared_ptr<ThemeData>& theme = (*it)->getTheme();
 
-		if(mViewNeedsReload)
+		if(mViewNeedsReload){
 			getViewElements(theme);
+		}
 
+		bool allow_show = false;
+		if(category_view == true){
+			//allow only TOP100
+			//nazwa (*it)->getFullName()
+			if ((*it)->getFullName().find("category") != std::string::npos) {
+				allow_show = true;
+			}
+		}else{
+			//alowall
+			allow_show = true;
+			if ((*it)->getFullName().find("category") != std::string::npos) {
+				allow_show = false;
+			}
+			
+		}
 
 		if((*it)->isVisible())
 		{
