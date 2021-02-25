@@ -26,7 +26,7 @@
 const int logoBuffersLeft[] = { -5, -2, -1 };
 const int logoBuffersRight[] = { 1, 2, 5 };
 
-bool category_view = true;
+bool category_view = false;
 
 SystemView::SystemView(Window* window) : IList<SystemViewData, SystemData*>(window, LIST_SCROLL_STYLE_SLOW, LIST_ALWAYS_LOOP),
 										 mViewNeedsReload(true),
@@ -171,7 +171,7 @@ void SystemView::populate()
 			getViewElements(theme);
 		}
 
-		bool allow_show = true;
+		bool allow_show = false;
 		if(category_view == true){
 			//allow only TOP100
 			//nazwa (*it)->getFullName()
