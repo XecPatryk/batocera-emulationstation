@@ -26,7 +26,7 @@
 const int logoBuffersLeft[] = { -5, -2, -1 };
 const int logoBuffersRight[] = { 1, 2, 5 };
 
-bool category_view = false;
+bool category_view = true;
 
 SystemView::SystemView(Window* window) : IList<SystemViewData, SystemData*>(window, LIST_SCROLL_STYLE_SLOW, LIST_ALWAYS_LOOP),
 										 mViewNeedsReload(true),
@@ -297,6 +297,8 @@ void SystemView::populate()
 			mWindow->pushGui(new GuiMsgBox(mWindow, _("ERROR: EVERY SYSTEM IS HIDDEN, RE-DISPLAYING ALL OF THEM NOW"), _("OK"), nullptr));
 		}
 	}
+
+	updateExtraTextBinding();
 }
 
 void SystemView::goToSystem(SystemData* system, bool animate)
