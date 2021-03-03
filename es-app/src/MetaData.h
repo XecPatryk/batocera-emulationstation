@@ -72,10 +72,22 @@ enum MetaDataId
 	Category80s = 37,
 	Category70s = 38,
 	Category90s = 39,
-	CategoryAction = 40,
-	CategoryPlatform = 41,
-	CategoryShooter = 42,
-	CategoryAdventure = 43
+
+	category_ball_paddle = 40,
+	category_board = 41,
+	category_casino = 42,
+	category_climbing = 43,
+	category_driving = 44,
+	category_fighter = 45,
+	category_maze = 46,
+	category_movie = 47,
+	category_pac_world = 48,
+	category_platform = 49,
+	category_puzzle = 50,
+	category_quiz = 51,
+	category_shooter = 52,
+	category_sport = 53,
+	category_tablttop = 54
 };
 
 namespace MetaDataImportType

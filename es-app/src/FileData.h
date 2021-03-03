@@ -91,10 +91,21 @@ public:
 	virtual const bool getKidGame();
 	virtual const bool hasCheevos();
 
-	virtual const bool getCategoryAction();
-	virtual const bool getCategoryPlatform();
-	virtual const bool getCategoryShooter();
-	virtual const bool getCategoryAdventure();
+	virtual const bool getBallPaddle();
+	virtual const bool getBoard();
+	virtual const bool getCasino();
+	virtual const bool getClimbing();
+	virtual const bool getDriving();
+	virtual const bool getFighter();
+	virtual const bool getMaze();
+	virtual const bool getMovie();
+	virtual const bool getPacWorld();
+	virtual const bool getPlatform();
+	virtual const bool getPuzzle();
+	virtual const bool getQuiz();
+	virtual const bool getShooter();
+	virtual const bool getSport();
+	virtual const bool getTablTtop();
 
 	virtual const bool getCategory70s();
 	virtual const bool getCategory80s();

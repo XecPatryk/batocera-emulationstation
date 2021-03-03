@@ -186,24 +186,80 @@ const std::string FileData::getThumbnailPath()
 	return thumbnail;
 }
 
-const bool FileData::getCategoryAction()
+//category_ball_paddle
+const bool FileData::getBallPaddle()
 {
-	return getMetadata(MetaDataId::CategoryAction) == "true";
+	return getMetadata(MetaDataId::category_ball_paddle) == "true";
 }
-
-const bool FileData::getCategoryPlatform()
+//category_board
+const bool FileData::getBoard()
 {
-	return getMetadata(MetaDataId::CategoryPlatform) == "true";
+	return getMetadata(MetaDataId::category_board) == "true";
 }
-
-const bool FileData::getCategoryShooter()
+//category_casino
+const bool FileData::getCasino()
 {
-	return getMetadata(MetaDataId::CategoryShooter) == "true";
+	return getMetadata(MetaDataId::category_casino) == "true";
 }
-
-const bool FileData::getCategoryAdventure()
+//category_climbing
+const bool FileData::getClimbing()
 {
-	return getMetadata(MetaDataId::CategoryAdventure) == "true";
+	return getMetadata(MetaDataId::category_climbing) == "true";
+}
+//category_driving
+const bool FileData::getDriving()
+{
+	return getMetadata(MetaDataId::category_driving) == "true";
+}
+//category_fighter
+const bool FileData::getFighter()
+{
+	return getMetadata(MetaDataId::category_fighter) == "true";
+}
+//category_maze
+const bool FileData::getMaze()
+{
+	return getMetadata(MetaDataId::category_maze) == "true";
+}
+//category_movie
+const bool FileData::getMovie()
+{
+	return getMetadata(MetaDataId::category_movie) == "true";
+}
+//category_pac_world
+const bool FileData::getPacWorld()
+{
+	return getMetadata(MetaDataId::category_pac_world) == "true";
+}
+//category_platform
+const bool FileData::getPlatform()
+{
+	return getMetadata(MetaDataId::category_platform) == "true";
+}
+//category_puzzle
+const bool FileData::getPuzzle()
+{
+	return getMetadata(MetaDataId::category_puzzle) == "true";
+}
+//category_quiz
+const bool FileData::getQuiz()
+{
+	return getMetadata(MetaDataId::category_quiz) == "true";
+}
+//category_shooter
+const bool FileData::getShooter()
+{
+	return getMetadata(MetaDataId::category_shooter) == "true";
+}
+//category_sport
+const bool FileData::getSport()
+{
+	return getMetadata(MetaDataId::category_sport) == "true";
+}
+//category_tablttop
+const bool FileData::getTablTtop()
+{
+	return getMetadata(MetaDataId::category_tablttop) == "true";
 }
 
 const bool FileData::getCategory70s()

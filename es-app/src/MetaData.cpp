@@ -60,10 +60,22 @@ void MetaDataList::initMetadata()
 
 		{ ArcadeSystemName, "arcadesystemname",  MD_STRING,        "",                 false,      _("Arcade system"),        _("enter game arcade system"), false },
 
-		{ CategoryAction,         "CategoryAction",    MD_BOOL,                "false",            false,      _("Only Action games"),             _("enter Category Action"),			false },
-		{ CategoryPlatform,         "CategoryPlatform",    MD_BOOL,                "false",            false,      _("Only Platform games"),             _("enter Category Platform"),			false },
-		{ CategoryShooter,         "CategoryShooter",    MD_BOOL,                "false",            false,      _("Only Shooter games"),             _("enter Category Shooter"),			false },
-		{ CategoryAdventure,         "CategoryAdventure",    MD_BOOL,                "false",            false,      _("Only Adventure games"),             _("enter Category Adventure"),			false },
+		{ category_ball_paddle,         "category_ball_paddle",    MD_BOOL,    "false",            false,      _("Only Ball & Paddle games"),             _("enter Category"),			false },
+		{ category_board,         "category_board",    MD_BOOL,    "false",            false,      _("Only Board games"),             _("enter Category"),			false },
+		{ category_casino,         "category_casino",    MD_BOOL,    "false",            false,      _("Only Casino games"),             _("enter Category"),			false },
+		{ category_climbing,         "category_climbing",    MD_BOOL,    "false",            false,      _("Only Climbing games"),             _("enter Category"),			false },
+		{ category_driving,         "category_driving",    MD_BOOL,    "false",            false,      _("Only Driving games"),             _("enter Category"),			false },
+		{ category_fighter,         "category_fighter",    MD_BOOL,    "false",            false,      _("Only Fighter games"),             _("enter Category"),			false },
+		{ category_maze,         "category_maze",    MD_BOOL,    "false",            false,      _("Only Maze games"),             _("enter Category"),			false },
+		{ category_movie,         "category_movie",    MD_BOOL,    "false",            false,      _("Only Movie games"),             _("enter Category"),			false },
+		{ category_pac_world,         "category_pac_world",    MD_BOOL,    "false",            false,      _("Only Pac World games"),             _("enter Category"),			false },
+		{ category_platform,         "category_platform",    MD_BOOL,    "false",            false,      _("Only Platform games"),             _("enter Category"),			false },
+		{ category_puzzle,         "category_puzzle",    MD_BOOL,    "false",            false,      _("Only Puzzle games"),             _("enter Category"),			false },
+		{ category_quiz,         "category_quiz",    MD_BOOL,    "false",            false,      _("Only Quiz games"),             _("enter Category"),			false },
+		{ category_shooter,         "category_shooter",    MD_BOOL,    "false",            false,      _("Only Shooter games"),             _("enter Category"),			false },
+		{ category_sport,         "category_sport",    MD_BOOL,    "false",            false,      _("Only Sport games"),             _("enter Category"),			false },
+		{ category_tablttop,         "category_tablttop",    MD_BOOL,    "false",            false,      _("Only Table Top games"),             _("enter Category"),			false },
+		
 
 		{ Category70s,         "Category70s",    MD_BOOL,                "false",            false,      _("Only 70s games"),             _("enter Category 70s"),			false },
 		{ Category80s,         "Category80s",    MD_BOOL,                "false",            false,      _("Only 80s games"),             _("enter Category 80s"),			false },

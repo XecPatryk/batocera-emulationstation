@@ -35,13 +35,13 @@ CollectionSystemManager* CollectionSystemManager::sInstance = NULL;
 
 // array for assigning games by name
 CollectionByName categoryByName[] = {
-	{"Darkwing Duck 2", AUTO_CATEGORY_SHOOTER},
+	{"mario", AUTO_CATEGORY_SHOOTER},
 	{"Paperboy 2", AUTO_CATEGORY_SHOOTER},
 	{"DuckTales 2", AUTO_CATEGORY_SHOOTER}
 };
 
 //array of system to be sorted by age
-std::string systemForCategorySort[] = {"nes", "c64"};
+std::string systemForCategorySort[] = {"mame"};
 
 auto categoryByNameVector = std::vector<CollectionByName>(categoryByName, categoryByName + sizeof(categoryByName) / sizeof(categoryByName[0]));
 
@@ -53,11 +53,22 @@ std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
 		{ AUTO_CATEGORY_80s,       "category_80s",    _("category_80s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_80s",          false,       true },
 		{ AUTO_CATEGORY_90s,       "category_90s",    _("category_90s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_90s",          false,       true },
 
-		{ AUTO_CATEGORY_ACTION,       "category_action",    _("category_action"),         FileSorts::FILENAME_ASCENDING,    "auto-category_action",          false,       true },
-		{ AUTO_CATEGORY_PLATFORM,       "category_platform",    _("category_platform"),         FileSorts::FILENAME_ASCENDING,    "auto-category_platform",          false,       true },
-		{ AUTO_CATEGORY_SHOOTER,       "category_shooter",    _("category_shooter"),         FileSorts::FILENAME_ASCENDING,    "auto-category_shooter",          false,       true },
-		{ AUTO_CATEGORY_ADVENTURE,       "category_adventure",    _("category_adventure"),         FileSorts::FILENAME_ASCENDING,    "auto-category_adventure",          false,       true },
-		
+		{ AUTO_CATEGORY_BALL_PADDLE,       "category_ball_paddle",    _("category_ball_paddle"),FileSorts::FILENAME_ASCENDING,    "auto-category_ball_paddle",       false,       true },
+		{ AUTO_CATEGORY_BOARD,       "category_board",    _("category_board"),FileSorts::FILENAME_ASCENDING,    "auto-category_board",       false,       true },
+		{ AUTO_CATEGORY_CASINO,       "category_casino",    _("category_casino"),FileSorts::FILENAME_ASCENDING,    "auto-category_casino",       false,       true },
+		{ AUTO_CATEGORY_CLIMBING,       "category_climbing",    _("category_climbing"),FileSorts::FILENAME_ASCENDING,    "auto-category_climbing",       false,       true },
+		{ AUTO_CATEGORY_DRIVING,       "category_driving",    _("category_driving"),FileSorts::FILENAME_ASCENDING,    "auto-category_driving",       false,       true },
+		{ AUTO_CATEGORY_FIGHTER,       "category_fighter",    _("category_fighter"),FileSorts::FILENAME_ASCENDING,    "auto-category_fighter",       false,       true },
+		{ AUTO_CATEGORY_MAZE,       "category_maze",    _("category_maze"),FileSorts::FILENAME_ASCENDING,    "auto-category_maze",       false,       true },
+		{ AUTO_CATEGORY_MOVIE,       "category_movie",    _("category_movie"),FileSorts::FILENAME_ASCENDING,    "auto-category_movie",       false,       true },
+		{ AUTO_CATEGORY_PAC_WORLD,       "category_pac_world",    _("category_pac_world"),FileSorts::FILENAME_ASCENDING,    "auto-category_pac_world",       false,       true },
+		{ AUTO_CATEGORY_PLATFORM,       "category_platform",    _("category_platform"),FileSorts::FILENAME_ASCENDING,    "auto-category_platform",       false,       true },
+		{ AUTO_CATEGORY_PUZZLE,       "category_puzzle",    _("category_puzzle"),FileSorts::FILENAME_ASCENDING,    "auto-category_puzzle",       false,       true },
+		{ AUTO_CATEGORY_QUIZ,       "category_quiz",    _("category_quiz"),FileSorts::FILENAME_ASCENDING,    "auto-category_quiz",       false,       true },
+		{ AUTO_CATEGORY_SHOOTER,       "category_shooter",    _("category_shooter"),FileSorts::FILENAME_ASCENDING,    "auto-category_shooter",       false,       true },
+		{ AUTO_CATEGORY_SPORT,       "category_sport",    _("category_sport"),FileSorts::FILENAME_ASCENDING,    "auto-category_sport",       false,       true },
+		{ AUTO_CATEGORY_TABLTTOP,       "category_tablttop",    _("category_tablttop"),FileSorts::FILENAME_ASCENDING,    "auto-category_tablttop",       false,       true },
+	
 		//type                name            long name                 default sort					  theme folder               isCustom     displayIfEmpty
 		{ AUTO_ALL_GAMES,       "all",          _("all games"),         FileSorts::FILENAME_ASCENDING,    "auto-allgames",           false,       true },
 		{ AUTO_LAST_PLAYED,     "recent",       _("last played"),       FileSorts::LASTPLAYED_ASCENDING,  "auto-lastplayed",         false,       true },
@@ -763,51 +774,171 @@ bool CollectionSystemManager::toggleGameInCollection(FileData* file, const std::
 			}
 		}
 
-		//CategoryAction
-		if (collectionName == "CategoryAction"){
-			value = md->get(MetaDataId::CategoryAction);
+		
+
+		//category_ball_paddle
+		if (collectionName == "category_ball_paddle"){
+			value = md->get(MetaDataId::category_ball_paddle);
 			if (value != "true")
-				md->set(MetaDataId::CategoryAction, "true");
+				md->set(MetaDataId::category_ball_paddle, "true");
 			else
 			{
 				adding = false;
-				md->set(MetaDataId::CategoryAction, "false");
+				md->set(MetaDataId::category_ball_paddle, "false");
 			}
 		}
-
-		//CategoryPlatform
-		if (collectionName == "CategoryPlatform"){
-			value = md->get(MetaDataId::CategoryPlatform);
+		//category_board
+		if (collectionName == "category_board"){
+			value = md->get(MetaDataId::category_board);
 			if (value != "true")
-				md->set(MetaDataId::CategoryPlatform, "true");
+				md->set(MetaDataId::category_board, "true");
 			else
 			{
 				adding = false;
-				md->set(MetaDataId::CategoryPlatform, "false");
+				md->set(MetaDataId::category_board, "false");
 			}
 		}
-
-		//CategoryShooter
-		if (collectionName == "CategoryShooter"){
-			value = md->get(MetaDataId::CategoryShooter);
+		//category_casino
+		if (collectionName == "category_casino"){
+			value = md->get(MetaDataId::category_casino);
 			if (value != "true")
-				md->set(MetaDataId::CategoryShooter, "true");
+				md->set(MetaDataId::category_casino, "true");
 			else
 			{
 				adding = false;
-				md->set(MetaDataId::CategoryShooter, "false");
+				md->set(MetaDataId::category_casino, "false");
 			}
 		}
-
-		//CategoryAdventure
-		if (collectionName == "CategoryAdventure"){
-			value = md->get(MetaDataId::CategoryAdventure);
+		//category_climbing
+		if (collectionName == "category_climbing"){
+			value = md->get(MetaDataId::category_climbing);
 			if (value != "true")
-				md->set(MetaDataId::CategoryAdventure, "true");
+				md->set(MetaDataId::category_climbing, "true");
 			else
 			{
 				adding = false;
-				md->set(MetaDataId::CategoryAdventure, "false");
+				md->set(MetaDataId::category_climbing, "false");
+			}
+		}
+		//category_driving
+		if (collectionName == "category_driving"){
+			value = md->get(MetaDataId::category_driving);
+			if (value != "true")
+				md->set(MetaDataId::category_driving, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_driving, "false");
+			}
+		}
+		//category_fighter
+		if (collectionName == "category_fighter"){
+			value = md->get(MetaDataId::category_fighter);
+			if (value != "true")
+				md->set(MetaDataId::category_fighter, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_fighter, "false");
+			}
+		}
+		//category_maze
+		if (collectionName == "category_maze"){
+			value = md->get(MetaDataId::category_maze);
+			if (value != "true")
+				md->set(MetaDataId::category_maze, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_maze, "false");
+			}
+		}
+		//category_movie
+		if (collectionName == "category_movie"){
+			value = md->get(MetaDataId::category_movie);
+			if (value != "true")
+				md->set(MetaDataId::category_movie, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_movie, "false");
+			}
+		}
+		//category_pac_world
+		if (collectionName == "category_pac_world"){
+			value = md->get(MetaDataId::category_pac_world);
+			if (value != "true")
+				md->set(MetaDataId::category_pac_world, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_pac_world, "false");
+			}
+		}
+		//category_platform
+		if (collectionName == "category_platform"){
+			value = md->get(MetaDataId::category_platform);
+			if (value != "true")
+				md->set(MetaDataId::category_platform, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_platform, "false");
+			}
+		}
+		//category_puzzle
+		if (collectionName == "category_puzzle"){
+			value = md->get(MetaDataId::category_puzzle);
+			if (value != "true")
+				md->set(MetaDataId::category_puzzle, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_puzzle, "false");
+			}
+		}
+		//category_quiz
+		if (collectionName == "category_quiz"){
+			value = md->get(MetaDataId::category_quiz);
+			if (value != "true")
+				md->set(MetaDataId::category_quiz, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_quiz, "false");
+			}
+		}
+		//category_shooter
+		if (collectionName == "category_shooter"){
+			value = md->get(MetaDataId::category_shooter);
+			if (value != "true")
+				md->set(MetaDataId::category_shooter, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_shooter, "false");
+			}
+		}
+		//category_sport
+		if (collectionName == "category_sport"){
+			value = md->get(MetaDataId::category_sport);
+			if (value != "true")
+				md->set(MetaDataId::category_sport, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_sport, "false");
+			}
+		}
+		//category_tablttop
+		if (collectionName == "category_tablttop"){
+			value = md->get(MetaDataId::category_tablttop);
+			if (value != "true")
+				md->set(MetaDataId::category_tablttop, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_tablttop, "false");
 			}
 		}
 
@@ -1159,37 +1290,88 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 					}
 					//====================================
 					break;
-				case AUTO_CATEGORY_ACTION:
+				/*case AUTO_CATEGORY_ACTION:
 					if (genre_gameDC.find("Action") != std::string::npos) {
 						include = true;
 					}else{
 						include = false;
 					}
 					//====================================
+					break;*/
+				//AUTO_CATEGORY_BALL_PADDLE
+				case AUTO_CATEGORY_BALL_PADDLE:
+					include = game->getBallPaddle();
 					break;
-				case AUTO_CATEGORY_PLATFORM:
-					if (genre_gameDC.find("Platform") != std::string::npos) {
-						include = true;
-					}else{
-						include = false;
-					}
 					//====================================
+				//AUTO_CATEGORY_BOARD
+				case AUTO_CATEGORY_BOARD:
+					include = game->getBoard();
 					break;
+					//====================================
+				//AUTO_CATEGORY_CASINO
+				case AUTO_CATEGORY_CASINO:
+					include = game->getCasino();
+					break;
+					//====================================
+				//AUTO_CATEGORY_CLIMBING
+				case AUTO_CATEGORY_CLIMBING:
+					include = game->getClimbing();
+					break;
+					//====================================
+				//AUTO_CATEGORY_DRIVING
+				case AUTO_CATEGORY_DRIVING:
+					include = game->getDriving();
+					break;
+					//====================================
+				//AUTO_CATEGORY_FIGHTER
+				case AUTO_CATEGORY_FIGHTER:
+					include = game->getFighter();
+					break;
+					//====================================
+				//AUTO_CATEGORY_MAZE
+				case AUTO_CATEGORY_MAZE:
+					include = game->getMaze();
+					break;
+					//====================================
+				//AUTO_CATEGORY_MOVIE
+				case AUTO_CATEGORY_MOVIE:
+					include = game->getMovie();
+					break;
+					//====================================
+				//AUTO_CATEGORY_PAC_WORLD
+				case AUTO_CATEGORY_PAC_WORLD:
+					include = game->getPacWorld();
+					break;
+					//====================================
+				//AUTO_CATEGORY_PLATFORM
+				case AUTO_CATEGORY_PLATFORM:
+					include = game->getPlatform();
+					break;
+					//====================================
+				//AUTO_CATEGORY_PUZZLE
+				case AUTO_CATEGORY_PUZZLE:
+					include = game->getPuzzle();
+					break;
+					//====================================
+				//AUTO_CATEGORY_QUIZ
+				case AUTO_CATEGORY_QUIZ:
+					include = game->getQuiz();
+					break;
+					//====================================
+				//AUTO_CATEGORY_SHOOTER
 				case AUTO_CATEGORY_SHOOTER:
-					if (genre_gameDC.find("Shooter") != std::string::npos) {
-						include = true;
-					}else{
-						include = false;
-					}
-					//by name
-					if(include == false){
-						for(auto it = categoryByNameVector.cbegin(); it != categoryByNameVector.cend(); it++)
-						{
-							if (name_gameDC.find((*it).name) != std::string::npos && (*it).system == AUTO_CATEGORY_SHOOTER) {
-								include = true;
-							}
-						}
-					}
+					include = game->getShooter();
+					break;
+					//====================================
+				//AUTO_CATEGORY_SPORT
+				case AUTO_CATEGORY_SPORT:
+					include = game->getSport();
+					break;
+					//====================================
+				//AUTO_CATEGORY_TABLTTOP
+				case AUTO_CATEGORY_TABLTTOP:
+					include = game->getTablTtop();
+					break;
 					//====================================
 				case AUTO_ARCADE:
 					include = isArcade;
