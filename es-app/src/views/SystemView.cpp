@@ -1085,11 +1085,11 @@ void SystemView::renderCarousel(const Transform4x4f& trans)
 		case VERTICAL_WHEEL:
 			yOff = (mCarousel.size.y() - mCarousel.logoSize.y()) / 2.f - (mCamOffset * logoSpacing[1]);
 			if (mCarousel.logoAlignment == ALIGN_LEFT)
-				xOff = mCarousel.logoSize.x() / 10.f;
+				xOff = mCarousel.logoSize.x() / 2.f;
 			else if (mCarousel.logoAlignment == ALIGN_RIGHT)
-				xOff = mCarousel.size.x() - (mCarousel.logoSize.x() * 1.1f);
+				xOff = mCarousel.size.x() - (mCarousel.logoSize.x() * 0.1f);
 			else
-				xOff = (mCarousel.size.x() - mCarousel.logoSize.x()) / 2.f;
+				xOff = (mCarousel.size.x() - mCarousel.logoSize.x()) / 0.1f;
 			break;
 		case VERTICAL:
 			logoSpacing[1] = ((mCarousel.size.y() - (mCarousel.logoSize.y() * mCarousel.maxLogoCount)) / (mCarousel.maxLogoCount)) + mCarousel.logoSize.y();
