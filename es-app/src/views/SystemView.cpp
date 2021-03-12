@@ -1083,13 +1083,13 @@ void SystemView::renderCarousel(const Transform4x4f& trans)
 	switch (mCarousel.type)
 	{
 		case VERTICAL_WHEEL:
-			yOff = (mCarousel.size.y() - mCarousel.logoSize.y()) / 1.f - (mCamOffset * logoSpacing[1]);
+			yOff = (mCarousel.size.y() - mCarousel.logoSize.y()) / 1.f - ((mCamOffset * logoSpacing[1])/2);//pionowo
 			if (mCarousel.logoAlignment == ALIGN_LEFT)
 				xOff = mCarousel.logoSize.x() / 8.5f;
 			else if (mCarousel.logoAlignment == ALIGN_RIGHT)
 				xOff = mCarousel.size.x() - (mCarousel.logoSize.x() * 1.6f);
 			else
-				xOff = (mCarousel.size.x() - mCarousel.logoSize.x()) / 1.5f;
+				xOff = (mCarousel.size.x() - mCarousel.logoSize.x()) / 0.9f;//poziomo
 			break;
 		case VERTICAL:
 			logoSpacing[1] = ((mCarousel.size.y() - (mCarousel.logoSize.y() * mCarousel.maxLogoCount)) / (mCarousel.maxLogoCount)) + mCarousel.logoSize.y();
