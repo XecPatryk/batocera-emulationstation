@@ -1089,7 +1089,7 @@ void SystemView::renderCarousel(const Transform4x4f& trans)
 			else if (mCarousel.logoAlignment == ALIGN_RIGHT)
 				xOff = mCarousel.size.x() - (mCarousel.logoSize.x() * 1.6f);
 			else
-				xOff = (mCarousel.size.x() - mCarousel.logoSize.x()) / 2.5f;
+				xOff = (mCarousel.size.x() - mCarousel.logoSize.x()) / 1.5f;
 			break;
 		case VERTICAL:
 			logoSpacing[1] = ((mCarousel.size.y() - (mCarousel.logoSize.y() * mCarousel.maxLogoCount)) / (mCarousel.maxLogoCount)) + mCarousel.logoSize.y();
