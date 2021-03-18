@@ -53,6 +53,17 @@ std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
 		{ AUTO_CATEGORY_80s,       "category_80s",    _("category_80s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_80s",          false,       true },
 		{ AUTO_CATEGORY_90s,       "category_90s",    _("category_90s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_90s",          false,       true },
 
+		{ AUTO_CATEGORY_TOP_100,       "category_top_100",    _("category_top_100"),         FileSorts::FILENAME_ASCENDING,    "auto-category_top_100",          false,       true },
+
+		{ AUTO_CATEGORY_ATARI,       "category_atari",    _("category_atari"),         FileSorts::FILENAME_ASCENDING,    "auto-category_atari",          false,       true },
+		{ AUTO_CATEGORY_TAITO,       "category_taito",    _("category_taito"),         FileSorts::FILENAME_ASCENDING,    "auto-category_taito",          false,       true },
+		{ AUTO_CATEGORY_NAMCO,       "category_namco",    _("category_namco"),         FileSorts::FILENAME_ASCENDING,    "auto-category_namco",          false,       true },
+		{ AUTO_CATEGORY_CAPCOM,       "category_capcom",    _("category_capcom"),         FileSorts::FILENAME_ASCENDING,    "auto-category_capcom",          false,       true },
+		{ AUTO_CATEGORY_KONAMI,       "category_konami",    _("category_konami"),         FileSorts::FILENAME_ASCENDING,    "auto-category_konami",          false,       true },
+		{ AUTO_CATEGORY_NINTENDO,       "category_nintendo",    _("category_nintendo"),         FileSorts::FILENAME_ASCENDING,    "auto-category_nintendo",          false,       true },
+		{ AUTO_CATEGORY_SEGA,       "category_sega",    _("category_sega"),         FileSorts::FILENAME_ASCENDING,    "auto-category_sega",          false,       true },
+		{ AUTO_CATEGORY_MIDWAY,       "category_midway",    _("category_midway"),         FileSorts::FILENAME_ASCENDING,    "auto-category_midway",          false,       true },
+
 		{ AUTO_CATEGORY_BALL_PADDLE,       "category_ball_paddle",    _("category_ball_paddle"),FileSorts::FILENAME_ASCENDING,    "auto-category_ball_paddle",       false,       true },
 		{ AUTO_CATEGORY_BOARD,       "category_board",    _("category_board"),FileSorts::FILENAME_ASCENDING,    "auto-category_board",       false,       true },
 		{ AUTO_CATEGORY_CASINO,       "category_casino",    _("category_casino"),FileSorts::FILENAME_ASCENDING,    "auto-category_casino",       false,       true },
@@ -941,6 +952,105 @@ bool CollectionSystemManager::toggleGameInCollection(FileData* file, const std::
 				md->set(MetaDataId::category_tablttop, "false");
 			}
 		}
+		//category_top_100
+		if (collectionName == "category_top_100"){
+			value = md->get(MetaDataId::category_top_100);
+			if (value != "true")
+				md->set(MetaDataId::category_top_100, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_top_100, "false");
+			}
+		}
+		//category_atari
+		if (collectionName == "category_atari"){
+			value = md->get(MetaDataId::category_atari);
+			if (value != "true")
+				md->set(MetaDataId::category_atari, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_atari, "false");
+			}
+		}
+		//category_taito
+		if (collectionName == "category_taito"){
+			value = md->get(MetaDataId::category_taito);
+			if (value != "true")
+				md->set(MetaDataId::category_taito, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_taito, "false");
+			}
+		}
+		//category_namco
+		if (collectionName == "category_namco"){
+			value = md->get(MetaDataId::category_namco);
+			if (value != "true")
+				md->set(MetaDataId::category_namco, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_namco, "false");
+			}
+		}
+		//category_capcom
+		if (collectionName == "category_capcom"){
+			value = md->get(MetaDataId::category_capcom);
+			if (value != "true")
+				md->set(MetaDataId::category_capcom, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_capcom, "false");
+			}
+		}
+		//category_konami
+		if (collectionName == "category_konami"){
+			value = md->get(MetaDataId::category_konami);
+			if (value != "true")
+				md->set(MetaDataId::category_konami, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_konami, "false");
+			}
+		}
+		//category_nintendo
+		if (collectionName == "category_nintendo"){
+			value = md->get(MetaDataId::category_nintendo);
+			if (value != "true")
+				md->set(MetaDataId::category_nintendo, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_nintendo, "false");
+			}
+		}
+		//category_sega
+		if (collectionName == "category_sega"){
+			value = md->get(MetaDataId::category_sega);
+			if (value != "true")
+				md->set(MetaDataId::category_sega, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_sega, "false");
+			}
+		}
+		//category_midway
+		if (collectionName == "category_midway"){
+			value = md->get(MetaDataId::category_midway);
+			if (value != "true")
+				md->set(MetaDataId::category_midway, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::category_midway, "false");
+			}
+		}
 
 		sysData->addToIndex(file);
 		saveToGamelistRecovery(file);
@@ -1373,6 +1483,42 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 					include = game->getTablTtop();
 					break;
 					//====================================
+				//AUTO_CATEGORY_TOP_100
+				case AUTO_CATEGORY_TOP_100:
+					include = game->getTop100();
+					break;
+				//AUTO_CATEGORY_ATARI
+				case AUTO_CATEGORY_ATARI:
+					include = game->getDevAtari();
+					break;
+				//AUTO_CATEGORY_TAITO
+				case AUTO_CATEGORY_TAITO:
+					include = game->getDevTaito();
+					break;
+				//AUTO_CATEGORY_NAMCO
+				case AUTO_CATEGORY_NAMCO:
+					include = game->getDevNamco();
+					break;
+				//AUTO_CATEGORY_CAPCOM
+				case AUTO_CATEGORY_CAPCOM:
+					include = game->getDevCapcom();
+					break;
+				//AUTO_CATEGORY_KONAMI
+				case AUTO_CATEGORY_KONAMI:
+					include = game->getDevKonami();
+					break;
+				//AUTO_CATEGORY_NINTENDO
+				case AUTO_CATEGORY_NINTENDO:
+					include = game->getDevNintendo();
+					break;
+				//AUTO_CATEGORY_SEGA
+				case AUTO_CATEGORY_SEGA:
+					include = game->getDevSega();
+					break;
+				//AUTO_CATEGORY_MIDWAY
+				case AUTO_CATEGORY_MIDWAY:
+					include = game->getDevMidway();
+					break;
 				case AUTO_ARCADE:
 					include = isArcade;
 					break;

@@ -74,7 +74,17 @@ void MetaDataList::initMetadata()
 		{ category_quiz,         "category_quiz",    MD_BOOL,    "false",            false,      _("Only Quiz games"),             _("enter Category"),			false },
 		{ category_shooter,         "category_shooter",    MD_BOOL,    "false",            false,      _("Only Shooter games"),             _("enter Category"),			false },
 		{ category_sport,         "category_sport",    MD_BOOL,    "false",            false,      _("Only Sport games"),             _("enter Category"),			false },
-		{ category_tablttop,         "category_tablttop",    MD_BOOL,    "false",            false,      _("Only Table Top games"),             _("enter Category"),			false },
+		{ category_tablttop,   "category_tablttop",    MD_BOOL,    "false",            false,      _("Only Table Top games"),             _("enter Category"),			false },
+
+		{ category_top_100,   "category_top_100",    MD_BOOL,    "false",            false,      _("Only TOP 100 games"),             _("enter Category"),			false },
+		{ category_atari,   "category_atari",    MD_BOOL,    "false",            false,      _("Only Atari games"),             _("enter Category"),			false },
+		{ category_taito,   "category_taito",    MD_BOOL,    "false",            false,      _("Only Taito games"),             _("enter Category"),			false },
+		{ category_namco,   "category_namco",    MD_BOOL,    "false",            false,      _("Only Namco games"),             _("enter Category"),			false },
+		{ category_capcom,   "category_capcom",    MD_BOOL,    "false",            false,      _("Only Capcom games"),             _("enter Category"),			false },
+		{ category_konami,   "category_konami",    MD_BOOL,    "false",            false,      _("Only Konami games"),             _("enter Category"),			false },
+		{ category_nintendo,   "category_nintendo",    MD_BOOL,    "false",            false,      _("Only Nintendo games"),             _("enter Category"),			false },
+		{ category_sega,   "category_sega",    MD_BOOL,    "false",            false,      _("Only Sega games"),             _("enter Category"),			false },
+		{ category_midway,   "category_midway",    MD_BOOL,    "false",            false,      _("Only Midway games"),             _("enter Category"),			false },
 		
 
 		{ Category70s,         "Category70s",    MD_BOOL,                "false",            false,      _("Only 70s games"),             _("enter Category 70s"),			false },

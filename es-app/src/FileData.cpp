@@ -185,7 +185,52 @@ const std::string FileData::getThumbnailPath()
 
 	return thumbnail;
 }
-
+//category_top_100
+const bool FileData::getTop100()
+{
+	return getMetadata(MetaDataId::category_top_100) == "true";
+}
+//category_atari
+const bool FileData::getDevAtari()
+{
+	return getMetadata(MetaDataId::category_atari) == "true";
+}
+//category_taito
+const bool FileData::getDevTaito()
+{
+	return getMetadata(MetaDataId::category_taito) == "true";
+}
+//category_namco
+const bool FileData::getDevNamco()
+{
+	return getMetadata(MetaDataId::category_namco) == "true";
+}
+//category_capcom
+const bool FileData::getDevCapcom()
+{
+	return getMetadata(MetaDataId::category_capcom) == "true";
+}
+//category_konami
+const bool FileData::getDevKonami()
+{
+	return getMetadata(MetaDataId::category_konami) == "true";
+}
+//category_nintendo
+const bool FileData::getDevNintendo()
+{
+	return getMetadata(MetaDataId::category_nintendo) == "true";
+}
+//category_sega
+const bool FileData::getDevSega()
+{
+	return getMetadata(MetaDataId::category_sega) == "true";
+}
+//category_midway
+const bool FileData::getDevMidway()
+{
+	return getMetadata(MetaDataId::category_midway) == "true";
+}
+//=======================================================
 //category_ball_paddle
 const bool FileData::getBallPaddle()
 {

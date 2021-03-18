@@ -87,7 +87,17 @@ enum MetaDataId
 	category_quiz = 51,
 	category_shooter = 52,
 	category_sport = 53,
-	category_tablttop = 54
+	category_tablttop = 54,
+
+	category_top_100 = 55,
+	category_atari = 56,
+	category_taito = 57,
+	category_namco = 58,
+	category_capcom = 59,
+	category_konami = 60,
+	category_nintendo = 61,
+	category_sega = 62,
+	category_midway = 63
 };
 
 namespace MetaDataImportType

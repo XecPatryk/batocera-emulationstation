@@ -107,6 +107,16 @@ public:
 	virtual const bool getSport();
 	virtual const bool getTablTtop();
 
+	virtual const bool getTop100();
+	virtual const bool getDevAtari();
+	virtual const bool getDevTaito();
+	virtual const bool getDevNamco();
+	virtual const bool getDevCapcom();
+	virtual const bool getDevKonami();
+	virtual const bool getDevNintendo();
+	virtual const bool getDevSega();
+	virtual const bool getDevMidway();
+
 	virtual const bool getCategory70s();
 	virtual const bool getCategory80s();
 	virtual const bool getCategory90s();
